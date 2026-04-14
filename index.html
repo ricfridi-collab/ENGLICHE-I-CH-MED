@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>BEM Elite Mastery | Dr. Mohamed Chouidira</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- واجهة التفعيل -->
+    <div id="activation-overlay">
+        <div class="activation-card">
+            <h2 style="font-family:'Playfair Display'; color:var(--gold-solid); margin:0;">BEM ELITE 2026</h2>
+            <p style="font-size:0.8rem; opacity:0.7; margin-top:5px;">Online Activation Required</p>
+            <input type="text" id="activation-input" placeholder="ENTER YOUR CODE">
+            <button id="activate-btn" class="option-btn" onclick="handleActivation()">ACTIVATE APP</button>
+            <p id="error-msg" style="color:var(--wrong); font-size:0.75rem; margin-top:10px; display:none;"></p>
+        </div>
+    </div>
+
+    <!-- الشريط المتحرك -->
+    <div class="ticker">
+        <div class="ticker-text">🎯 BEM 2026 OFFICIAL TRAINING HUB • DR. MOHAMED CHOUIDIRA • SMART REVISION 🎯</div>
+    </div>
+
+    <div class="app-container">
+        <!-- القائمة الجانبية -->
+        <nav class="side-bar">
+            <div class="nav-item active" onclick="showHome()">
+                <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+            </div>
+            <div class="nav-item" onclick="startQuiz('Unit1')">
+                <svg viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
+            </div>
+            <div class="nav-item" onclick="startQuiz('Unit2')">
+                <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"/></svg>
+            </div>
+            <div class="nav-item" onclick="startQuiz('Unit3')">
+                <svg viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6z"/></svg>
+            </div>
+        </nav>
+
+        <!-- المحتوى الرئيسي -->
+        <main class="main-content" id="home-view">
+            <h1>Elite Revision</h1>
+            <p style="opacity: 0.7; font-size: 0.85rem; margin-bottom: 20px;">Master English for BEM 2026 with Dr. Chouidira.</p>
+            
+            <div class="card" onclick="startQuiz('Unit1')">
+                <svg class="card-icon" viewBox="0 0 24 24"><path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/></svg>
+                <div class="card-info"><h3>Universal Landmarks</h3><span>Itinerary & Traveling Vocabulary</span></div>
+            </div>
+            <div class="card" onclick="startQuiz('Unit2')">
+                <svg class="card-icon" viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4z"/></svg>
+                <div class="card-info"><h3>Grammar Mastery</h3><span>Passive Voice & Equality</span></div>
+            </div>
+            <div class="card" onclick="startQuiz('Unit3')">
+                <svg class="card-icon" viewBox="0 0 24 24"><path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6z"/></svg>
+                <div class="card-info"><h3>Writing & Memories</h3><span>Charity, Figures & Dream Job</span></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- واجهة الاختبار -->
+    <div class="quiz-overlay" id="quiz-overlay">
+        <div class="score-bar">
+            <span style="color: var(--correct); font-weight: 800;">✓ <span id="c-count">0</span></span>
+            <span id="t-count" style="color: var(--gold-solid); font-weight: 800;">TASK 1/10</span>
+            <span style="color: var(--wrong); font-weight: 800;">✗ <span id="w-count">0</span></span>
+        </div>
+        <div id="quiz-box"></div>
+        <button onclick="showHome()" style="margin-top: 25px; background: none; border: 1px solid #ff4444; color: #ff4444; padding: 12px; border-radius: 10px; width: 100%; font-weight: bold; font-size: 0.8rem; cursor: pointer;">END SESSION</button>
+    </div>
+
+    <footer class="footer-bar"><div class="signature">DR. MOHAMED CHOUIDIRA</div></footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

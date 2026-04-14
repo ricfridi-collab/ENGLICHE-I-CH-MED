@@ -1,0 +1,263 @@
+:root {
+    --primary-bg: #05100d;
+    --vert-bouteille: #1b4d3e;
+    --gold-linear: linear-gradient(135deg, #d4af37 0%, #f2d472 50%, #b8860b 100%);
+    --gold-solid: #d4af37;
+    --text-color: #ffffff;
+    --glass-border: rgba(212, 175, 55, 0.3);
+    --correct: #2ecc71;
+    --wrong: #e74c3c;
+}
+
+body {
+    background: radial-gradient(circle at top right, #1b4d3e 0%, #05100d 70%);
+    color: var(--text-color);
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* واجهة التفعيل */
+#activation-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--primary-bg);
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.activation-card {
+    background: rgba(27, 77, 62, 0.2);
+    border: 1px solid var(--gold-solid);
+    padding: 30px;
+    border-radius: 20px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+.activation-card input {
+    width: 100%;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 12px;
+    border: 1px solid var(--gold-solid);
+    background: rgba(0,0,0,0.4);
+    color: white;
+    text-align: center;
+    font-size: 1.2rem;
+    outline: none;
+}
+
+/* الشريط المتحرك */
+.ticker {
+    background: var(--vert-bouteille);
+    color: var(--gold-solid);
+    padding: 8px 0;
+    font-size: 0.7rem;
+    border-bottom: 1px solid var(--gold-solid);
+    text-align: center;
+    overflow: hidden;
+}
+
+.ticker-text {
+    display: inline-block;
+    white-space: nowrap;
+    animation: move 25s linear infinite;
+    font-weight: 600;
+}
+
+/* الحاوية الرئيسية */
+.app-container {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+/* القائمة الجانبية */
+.side-bar {
+    width: 70px;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(15px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 25px;
+    border-right: 1px solid var(--glass-border);
+    z-index: 10;
+}
+
+.nav-item {
+    width: 45px;
+    height: 45px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    filter: grayscale(1) opacity(0.5);
+    transition: 0.4s;
+}
+
+.nav-item svg {
+    width: 100%;
+    height: 100%;
+    fill: var(--gold-solid);
+}
+
+.nav-item.active {
+    filter: grayscale(0) opacity(1);
+    transform: scale(1.15);
+    filter: drop-shadow(0 0 8px var(--gold-solid));
+}
+
+/* المحتوى */
+.main-content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    background: var(--gold-linear);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0 0 15px 0;
+}
+
+.card {
+    background: rgba(27, 77, 62, 0.4);
+    border: 1px solid var(--glass-border);
+    border-radius: 15px;
+    padding: 15px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.card:active {
+    transform: scale(0.97);
+    background: rgba(27, 77, 62, 0.6);
+}
+
+.card-icon {
+    width: 32px;
+    height: 32px;
+    margin-right: 15px;
+    fill: var(--gold-solid);
+}
+
+.card-info h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--gold-solid);
+}
+
+.card-info span {
+    font-size: 0.75rem;
+    opacity: 0.7;
+}
+
+/* واجهة الاختبار */
+.quiz-overlay {
+    position: fixed;
+    inset: 0;
+    background: var(--primary-bg);
+    z-index: 2000;
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.score-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.05);
+    padding: 12px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    border: 1px solid var(--glass-border);
+    font-size: 0.85rem;
+}
+
+.paragraph-card {
+    background: rgba(255,255,255,0.05);
+    padding: 15px;
+    border-radius: 15px;
+    border-left: 4px solid var(--gold-solid);
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.translation {
+    font-style: italic;
+    color: #b0b0b0;
+    font-size: 0.8rem;
+    margin-top: 8px;
+    display: block;
+    direction: rtl;
+}
+
+.question-text {
+    font-size: 1.05rem;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.option-btn {
+    width: 100%;
+    padding: 15px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--glass-border);
+    color: white;
+    border-radius: 12px;
+    margin-top: 10px;
+    font-size: 0.95rem;
+    cursor: pointer;
+    text-align: left;
+}
+
+.option-btn.correct {
+    background: var(--correct) !important;
+    font-weight: bold;
+}
+
+.option-btn.wrong {
+    background: var(--wrong) !important;
+}
+
+/* التذييل */
+.footer-bar {
+    background: var(--vert-bouteille);
+    border-top: 1px solid var(--gold-solid);
+    padding: 12px 0;
+    text-align: center;
+}
+
+.signature {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.75rem;
+    color: var(--gold-solid);
+    letter-spacing: 4px;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+@keyframes move {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
